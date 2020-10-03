@@ -1,12 +1,14 @@
 <?php
-// header('location: datamasterdevice.php');
-$profile = "http://35.229.217.130:9992/api/device";
+
+include_once 'url.php';
+session_start();
+header('location: home.php?page=device');
+$profile = "$url/device";
 $ch=curl_init($profile);
 
-
-
+$token = $_SESSION['access_token'];
 $basedata = array(
-    "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHBlbmdndW5hIjoxLCJpYXQiOjE1OTkxMjI2NTAsImV4cCI6MTU5OTEyNjI1MH0.0kk4RDIFRBYG4s-cSRG9QxwyLMHc8mJrmT_4DY0SVG8",
+    'token' => $token,
     "kode_device" => $_POST['kode_device'],
     "serial_device" => $_POST['serial_device'],
     "hardware_id" => $_POST['hardware_id'],
@@ -21,6 +23,18 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
 $server_output = curl_exec($ch);
-return $server_output;
-echo $server_output
+if (curl_errno($ch)) {
+    die('Couldn\'t send request: ' . curl_error($ch));
+} else {
+    $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    if ($resultStatus == 403) {
+        header('Location: login.php');
+    } else if ($resultStatus == 401) {
+        header('location: login.php');
+    }
+    else if ($resultStatus == 201) {
+        return $server_output;
+    }
+}
+curl_close($ch);
 ?>

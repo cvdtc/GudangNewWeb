@@ -1,24 +1,24 @@
+
 <?php
 
 include_once 'url.php';
 session_start();
-header('location: home.php?page=asuransi');
-$profile = "$url/asuransi";
+header ('location: home.php?page=mutasi');
+$profile = "$url/mutasi";
 $ch=curl_init($profile);
 
 $token = $_SESSION['access_token'];
+// $no_order ="ORDR-278563497";
+// $keterangan = "";
 $basedata = array(
-    'token' => $token,
-    "nama_asuransi" => $_POST['nama_asuransi'],
-    "perusahaan" => $_POST['perusahaan'],
-    "alamat" => $_POST['alamat'],
-    "nilai" => $_POST['nilai'],
-    "status" => $_POST['status'],
-    "tanggal_kontrak_awal" => $_POST['tanggal_kontrak_awal'],
-    "tanggal_kontrak_akhir" => $_POST['tanggal_kontrak_akhir']
-);
-
+        'token' => $token,
+        "no_order" => $_POST['no_order'],
+        "keterangan" => $_POST['keterangan']
+        // "no_order" => $no_order,
+        // "keterangan" => $keterangan
+    );
 $data = json_encode($basedata);
+// print_r ($data);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

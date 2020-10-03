@@ -1,10 +1,14 @@
 <?php
-    header ('location: datamasterkota.php');
-    $profile = "http://35.229.217.130:9992/api/kota";
+
+    include_once 'url.php';
+    session_start();
+    header ('location: home.php?page=kota');
+    $profile = "$url/kota";
     $ch = curl_init($profile);
 
+    $token = $_SESSION['access_token'];
     $basedata = array(
-        'token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHBlbmdndW5hIjoxLCJpYXQiOjE1OTkyMDU0NzksImV4cCI6MTU5OTIwOTA3OX0.4vsku7grZ-JGU8KcIzxDlMYBKWqS-eAiUtW5hRV3CBo',
+        'token' => $token,
         'nama_kota' => $_POST['nama_kota'],
         'keterangan' => $_POST['keterangan'],
         'idprovinsi' => $_POST['idprovinsi'],
@@ -12,13 +16,24 @@
     );    
 
     $data = json_encode($basedata);
-    // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
     $server_output = curl_exec($ch);
-    return $server_output;
-    // print_r($data);
+    if (curl_errno($ch)) {
+        die('Couldn\'t send request: ' . curl_error($ch));
+    } else {
+        $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($resultStatus == 403) {
+            header('Location: login.php');
+        } else if ($resultStatus == 401) {
+            header('location: login.php');
+        }
+        else if ($resultStatus == 201) {
+            return $server_output;
+        }
+    }
+    curl_close($ch);
 ?>

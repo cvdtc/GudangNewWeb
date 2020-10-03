@@ -1,11 +1,15 @@
 <?php
-header ('location: datamastervoucher.php');
-$profile ='http://35.229.217.130:9992/api/evoucher';
+
+include_once 'url.php';
+session_start();
+header ('location: home.php?page=voucher');
+$profile ="$url/uvoucher";
 $message = '';
 $ch = curl_init($profile);
 
+$token = $_SESSION['access_token'];
 $basedata = array(
-    'token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHBlbmdndW5hIjoxLCJpYXQiOjE1OTkxODYwMTgsImV4cCI6MTU5OTE4OTYxOH0.l1aroWhUoR1V-SsMW6aj9kpphEn5-qBFQWkD_SC1ryQ',
+    'token' => $token,
     'idvoucher' => $_POST['idvoucher'],
     'kode_voucher' => $_POST['kode_voucher'],
     'jumlah_voucher' => $_POST['jumlah_voucher'],
@@ -27,16 +31,13 @@ if (curl_errno($ch)) {
     die('Couldn\'t send request: ' . curl_error($ch));
 } else {
     $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    if ($resultStatus == 200) {
-        print_r('Data Berhasil Disimpan'); 
-        return $server_output;
-    } else if ($resultStatus == 405) {
-        // die('Request failed: HTTP status code: ' . $resultStatus);
-        print_r('Simpan Data Tidak Berhasil');
+    if ($resultStatus == 403) {
+        header('Location: login.php');
+    } else if ($resultStatus == 401) {
+        header('location: login.php');
     }
-    else if ($resultStatus == 403) {
-        // die('Request failed: HTTP status code: ' . $resultStatus);
-        print_r('Silahkan Login Kembali');
+    else if ($resultStatus == 200) {
+        return $server_output;
     }
 }
 
@@ -46,7 +47,7 @@ if (curl_errno($ch)) {
 //     echo 'Data Berhasil Disimpan';
 // }
 
-echo 'coba', $resultStatus;
+// echo 'coba', $resultStatus;
 
 curl_close($ch);
 // return $server_output;

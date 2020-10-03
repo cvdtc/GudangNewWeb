@@ -1,10 +1,14 @@
 <?php
-    header ('location: datamasterprovinsi.php');
-    $profile = "http://35.229.217.130:9992/api/eprovinsi";
+
+    include_once 'url.php';
+    session_start();
+    header ('location: home.php?page=provinsi');
+    $profile = "$url/uprovinsi";
     $ch = curl_init($profile);
 
+    $token = $_SESSION['access_token'];
     $basedata = array(
-        'token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHBlbmdndW5hIjoxLCJpYXQiOjE1OTkxODM1MzgsImV4cCI6MTU5OTE4NzEzOH0.s2T2QmYSnv-Ahy3nquNB0Ie-bB3ymlruerOatD2l_Uk',
+        'token' => $token,
         'idprovinsi' => $_POST['idprovinsi'],
         'nama_provinsi' => $_POST['nama_provinsi'],
         'keterangan' => $_POST['keterangan'],
@@ -19,6 +23,18 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
     $server_output = curl_exec($ch);
-    return $server_output;
-    echo $server_output;
+    if (curl_errno($ch)) {
+        die('Couldn\'t send request: ' . curl_error($ch));
+    } else {
+        $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($resultStatus == 403) {
+            header('Location: login.php');
+        } else if ($resultStatus == 401) {
+            header('location: login.php');
+        }
+        else if ($resultStatus == 200) {
+            return $server_output;
+        }
+    }
+    curl_close($ch);
 ?>

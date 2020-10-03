@@ -1,10 +1,14 @@
 <?php
-    // header ('location: datamasterjenisproduk.php');
-    $profile = "http://35.229.217.130:9992/api/ejenisproduk";
+
+    include_once 'url.php';
+    session_start();
+    header ('location: home.php?page=jenisproduk');
+    $profile = "$url/ujenisproduk";
     $ch = curl_init($profile);
 
+    $token = $_SESSION['access_token'];
     $basedata = array(
-        'token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHBlbmdndW5hIjoxLCJpYXQiOjE1OTkwOTkyODIsImV4cCI6MTU5OTEwMjg4Mn0.DetminMG61yK8NyS1DQysrN2_SE_X178y9nu7yYJT48',
+        'token' => $token,
         'idjenis_produk' => $_POST['idjenis_produk'],
         'nama' => $_POST['nama'],
         'keterangan' => $_POST['keterangan'],
@@ -18,7 +22,19 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
     $server_output = curl_exec($ch);
-    return $server_output;
-    echo $server_output;
+    if (curl_errno($ch)) {
+        die('Couldn\'t send request: ' . curl_error($ch));
+    } else {
+        $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($resultStatus == 403) {
+            header('Location: login.php');
+        } else if ($resultStatus == 401) {
+            header('location: login.php');
+        }
+        else if ($resultStatus == 200) {
+            return $server_output;
+        }
+    }
+    curl_close($ch);
     
 ?>

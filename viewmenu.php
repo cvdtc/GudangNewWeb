@@ -1,41 +1,39 @@
 <?php 
 
-include_once 'url.php';
 session_start();
 // if ($_SESSION['access_token']='') {
 if (!$_SESSION['logged_in']) {
     header("Location: login.php");
     exit;
 }
-
-function curl1($url){
-    $authorization = "Authorization: Bearer ".$_SESSION['access_token'];
-    $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+// function curl($url){
+//     $authorization = "Authorization: Bearer ".$_SESSION['access_token'];
+//     $ch = curl_init(); 
+//     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
+//     curl_setopt($ch, CURLOPT_URL, $url);
+//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
      
-    $output = curl_exec($ch);  
+//     $output = curl_exec($ch);  
           
-    // return $output;
-    if (curl_errno($ch)) {
-        die('Couldn\'t send request: ' . curl_error($ch));
-    } else {
-        $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        if ($resultStatus == 200) {
-        } else if ($resultStatus == 403) {
-            header("Location: login.php");
-        }
-        else if ($resultStatus == 401) {
-            header("Location: login.php");
-        }
-    }
-    curl_close($ch);
-}
-
-$profile = curl1("$url/asuransi");
-
-
+//     // return $output;
+//     if (curl_errno($ch)) {
+//         die('Couldn\'t send request: ' . curl_error($ch));
+//     } else {
+//         $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//         if ($resultStatus == 200) {
+//             // print_r('Data Berhasil Disimpan'); 
+//             return $output;
+//         } else if ($resultStatus == 403) {
+//             // die('Request failed: HTTP status code: ' . $resultStatus);
+//             // print_r('Silahkan Login Kembali');
+//             header("Location: login.php");
+//         }
+//         else if ($resultStatus == 401) {
+//             header("Location: login.php");
+//         }
+//     }
+//     curl_close($ch);
+// }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -93,28 +91,25 @@ $profile = curl1("$url/asuransi");
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="home.php"><i class="ti-dashboard"></i> <span>Home</span></a></li>
+                            <li><a href="viewmenu.php"><i class="ti-dashboard"></i> <span>Home</span></a></li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i><span>Master</span></a>
                                 <ul class="collapse">
-                                    <li><a href="home.php?page=provinsi"><i class="ti-layers-alt"></i> &nbsp;Master Provinsi</a></li>
-                                    <li><a href="home.php?page=kota"><i class="fa fa-th-large"></i> &nbsp;Master Kota</a></li>
-                                    <li><a href="home.php?page=lokasi"><i class="fa fa-map"></i> &nbsp;Master Lokasi</a></li>
-                                    <li><a href="home.php?page=jenisproduk"><i class="fa fa-object-group"></i> &nbsp;Master Jenis Produk</a></li>
-                                    <li><a href="home.php?page=device"><i class="fa fa-tablet"></i> &nbsp;Master Device</a></li>
-                                    <li><a href="home.php?page=kondisi"><i class="fa fa-square-o"></i> &nbsp;Master Kondisi</a></li>
-                                    <li><a href="home.php?page=asuransi"><i class="fa fa-chain"></i> &nbsp;Master Asuransi</a></li>
-                                    <li><a href="home.php?page=payment"><i class="fa fa-credit-card"></i> &nbsp;Master Payment</a></li>
-                                    <li><a href="home.php?page=voucher"><i class="fa fa-money"></i> &nbsp;Master Voucher</a></li>
+                                    <li><a href="?page=datamasterprovinsi"><i class="ti-layers-alt"></i> &nbsp;Master Provinsi</a></li>
+                                    <li><a href="?page=datamasterkota"><i class="fa fa-th-large"></i> &nbsp;Master Kota</a></li>
+                                    <li><a href="?page=datamasterlokasi"><i class="fa fa-map"></i> &nbsp;Master Lokasi</a></li>
+                                    <li><a href="?page=datamasterjenisproduk"><i class="fa fa-object-group"></i> &nbsp;Master Jenis Produk</a></li>
+                                    <li><a href="?page=datamasterdevice"><i class="fa fa-tablet"></i> &nbsp;Master Device</a></li>
+                                    <li><a href="?page=datamasterkondisi"><i class="fa fa-square-o"></i> &nbsp;Master Kondisi</a></li>
+                                    <li><a href="?page=datamasterasuransi"><i class="fa fa-chain"></i> &nbsp;Master Asuransi</a></li>
+                                    <li><a href="?page=datamasterpayment"><i class="fa fa-credit-card"></i> &nbsp;Master Payment</a></li>
+                                    <li><a href="?page=datamastervoucher"><i class="fa fa-money"></i> &nbsp;Master Voucher</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i><span>Transaksi</span></a>
                                 <ul class="collapse">
-                                    <li><a href="home.php?page=mutasi" class="ti-flag-alt-2"> Mutasi</a></li>
-                                </ul>
-                                <ul class="collapse">
-                                    <li><a href="home.php?page=listsewaexpired" class="ti-marker-alt"> Sewa Expired</a></li>
+                                    <li><a href="?page=datamasterprovinsi"><i class="ti-flag-alt-2"></i> &nbsp;mutasi</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -163,7 +158,7 @@ $profile = curl1("$url/asuransi");
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <!-- <li><a href="index.html">Home</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -179,96 +174,22 @@ $profile = curl1("$url/asuransi");
                 </div>
             </div>
         <!-- sidebar menu area end -->
-        <div class="main-content-inner">
-        <?php
-        // function curl($url){
-        //     $authorization = "Authorization: Bearer ".$_SESSION['access_token'];
-        //     $ch = curl_init(); 
-        //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
-        //     curl_setopt($ch, CURLOPT_URL, $url);
-        //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-             
-        //     $output = curl_exec($ch);  
-                  
-        //     // return $output;
-        //     if (curl_errno($ch)) {
-        //         die('Couldn\'t send request: ' . curl_error($ch));
-        //     } else {
-        //         $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        //         if ($resultStatus == 200) {
-        //             // print_r('Data Berhasil Disimpan'); 
-        //             return $output;
-        //         } else if ($resultStatus == 403) {
-        //             // die('Request failed: HTTP status code: ' . $resultStatus);
-        //             // print_r('Silahkan Login Kembali');
-        //             header("Location: login.php");
-        //         }
-        //         else if ($resultStatus == 401) {
-        //             header("Location: login.php");
-        //         }
-        //     }
-        //     curl_close($ch);
-        // }
-
-        if (isset($_GET['page'])){
-            $page = $_GET['page'];
-            switch ($page){
-                case 'provinsi':
-                    include "datamasterprovinsi.php";
-                    break;
-                case 'kota':
-                    include "datamasterkota.php";
-                    break;
-                case 'lokasi':
-                    include "datamasterlokasi.php";
-                    break;
-                case 'jenisproduk':
-                    include "datamasterjenisproduk.php";
-                    break;
-                case 'device':
-                    // $profile = curl("http://server.horang.id:9992/api/device");
-                    include "datamasterdevice.php";
-                    break;
-                case 'kondisi':
-                    include "datamasterkondisi.php";
-                    break;
-                case 'asuransi':
-                    // $profile = curl("http://server.horang.id:9992/api/asuransi");
-                    include "datamasterasuransi.php";
-                    break;
-                case 'payment':
-                    include "datamasterpayment.php";
-                    break;
-                case 'voucher':
-                    include "datamastervoucher.php";
-                    break;    
-                case 'mutasi':
-                    include "mutasi.php";
-                    break;   
-                case 'listsewaexpired':
-                    include "listsewaexpired.php";
-                    break;    
-            }
-        } 
-        else {
-            // $profile = curl("http://server.horang.id:9992/api/asuransi");
-            include 'datamasterasuransi.php';
-        }
-        ?>
-        </div>
+        
         <!-- main content area end -->
-        <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-            </div>
-        </footer>
-        <!-- footer area end-->
+        <div class="main-content-inner">
+            <?php
+                $page="";
+                    if (strlen($page)!=0) {
+                        include("$page.php");
+                    } else if ($page="mutasi") {
+                        include("mutasi.php");
+                    } else {
+                        include 'datamasterkota.php';
+                    }
+            ?>
+        </div>
     </div>
     <!-- page container area end -->
-    <!-- offset area start -->
-    
-    <!-- offset area end -->
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->

@@ -1,45 +1,44 @@
+
+
 <?php
 
+    include_once 'url.php';
     session_start();
-    $profile = "http://35.229.217.130:9992/api/login";
+    $profile = "$url/login";
     
     $ch = curl_init($profile);
+
     $basedata = array(
-        'email' => $_POST['email'],
-        'password' => $_POST['password']
+       'email' => $_POST['email'],
+       'password' => $_POST['password']
     );    
 
-    $data = json_decode($ch);
-    $access_token = $data['access_token'];
-    echo "masukkkkkkkk";
-
+    //    $data = json_encode($basedata);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($basedata)); 
 
     $server_output = curl_exec($ch);
-    return $server_output;
-    // print_r($data);
+    $data = json_decode($server_output, TRUE);
+    // print_r($data);  
+    //echo $data['access_token']; //sukses
 
-    // $data1 = json_decode($profile, TRUE);
-    // print_r ($data1);
-    // foreach ($data1 as $row) :
-    //     echo $row["access_token"];
-    //     echo "masukkkkkkkkkkkkkk";
-    // endforeach;
-    // echo "masukkkkkkkk";
-    // print_r ($data['access_token']);
-    
-    // echo "masukkkkkkkk";
-    // print_r ($data1['access_token']);
-    
-    echo $data['access_token'];
-    $_SESSION["access_token"] = $access_token;
-    if ($data['access_token']!=""){
-        $_SESSION['logged_in'] = "true";
-        header('Location: datamasterkota.php');
-    } else {
-        header('Location: login.php');
-    }
+     if ($data['access_token']!=""){
+         $_SESSION['nama_customer']=$data['nama_customer'];
+         $_SESSION['access_token']=$data['access_token'];
+         $_SESSION['logged_in'] = "true";
+         header('Location: home.php');
+     } else {
+         header('Location: login.php');
+     }
 ?>
+
+
+
+
+
+
+
+
