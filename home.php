@@ -53,28 +53,28 @@ $profile = curl1("$url/asuransi");
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amcharts css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/rowGroup.dataTables.min.css"/>
+    <!-- daterangepicker -->
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
     <!-- preloader area start -->
     <div id="preloader">
         <div class="loader"></div>
@@ -86,7 +86,7 @@ $profile = curl1("$url/asuransi");
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/icon/logo_gudang.png" alt="logo"></a>
+                    <a href="home.php"><img src="assets/images/icon/logo_gudang.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -101,6 +101,7 @@ $profile = curl1("$url/asuransi");
                                     <li><a href="home.php?page=kota"><i class="fa fa-th-large"></i> &nbsp;Master Kota</a></li>
                                     <li><a href="home.php?page=lokasi"><i class="fa fa-map"></i> &nbsp;Master Lokasi</a></li>
                                     <li><a href="home.php?page=jenisproduk"><i class="fa fa-object-group"></i> &nbsp;Master Jenis Produk</a></li>
+                                    <li><a href="home.php?page=produk"><i class="ti-arrow-circle-down"></i> &nbsp;Master Produk</a></li>
                                     <li><a href="home.php?page=device"><i class="fa fa-tablet"></i> &nbsp;Master Device</a></li>
                                     <li><a href="home.php?page=kondisi"><i class="fa fa-square-o"></i> &nbsp;Master Kondisi</a></li>
                                     <li><a href="home.php?page=asuransi"><i class="fa fa-chain"></i> &nbsp;Master Asuransi</a></li>
@@ -120,7 +121,19 @@ $profile = curl1("$url/asuransi");
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i><span>Laporan</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Mutasi</a></li>
+                                    <li><a href="home.php?page=laporanpenjualan" class="ti-file"> Laporan Penjualan</a></li>
+                                </ul>
+                                <ul class="collapse">
+                                    <li><a href="home.php?page=laporanpenjualanjenisproduk" class="ti-files"> Laporan Penjualan Jenis produk</a></li>
+                                </ul>
+                                <ul class="collapse">
+                                    <li><a href="home.php?page=laporanpenjualancostumercontainer" class="ti-envelope"> Laporan Penjualan Customer Kontainer</a></li>
+                                </ul>
+                                <ul class="collapse">
+                                    <li><a href="home.php?page=laporanpenjualancontainercostumer" class="ti-eraser"> Laporan Penjualan Kontainer Customer</a></li>
+                                </ul>
+                                <ul class="collapse">
+                                    <li><a href="home.php?page=laporanjumlahkontainerterpakai" class="ti-bar-chart-alt"> Laporan Jumlah Kontainer Terpakai</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -163,7 +176,7 @@ $profile = curl1("$url/asuransi");
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="home.php">Home</a></li>
                             </ul>
                         </div>
                     </div>
@@ -181,35 +194,6 @@ $profile = curl1("$url/asuransi");
         <!-- sidebar menu area end -->
         <div class="main-content-inner">
         <?php
-        // function curl($url){
-        //     $authorization = "Authorization: Bearer ".$_SESSION['access_token'];
-        //     $ch = curl_init(); 
-        //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
-        //     curl_setopt($ch, CURLOPT_URL, $url);
-        //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-             
-        //     $output = curl_exec($ch);  
-                  
-        //     // return $output;
-        //     if (curl_errno($ch)) {
-        //         die('Couldn\'t send request: ' . curl_error($ch));
-        //     } else {
-        //         $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        //         if ($resultStatus == 200) {
-        //             // print_r('Data Berhasil Disimpan'); 
-        //             return $output;
-        //         } else if ($resultStatus == 403) {
-        //             // die('Request failed: HTTP status code: ' . $resultStatus);
-        //             // print_r('Silahkan Login Kembali');
-        //             header("Location: login.php");
-        //         }
-        //         else if ($resultStatus == 401) {
-        //             header("Location: login.php");
-        //         }
-        //     }
-        //     curl_close($ch);
-        // }
-
         if (isset($_GET['page'])){
             $page = $_GET['page'];
             switch ($page){
@@ -224,6 +208,9 @@ $profile = curl1("$url/asuransi");
                     break;
                 case 'jenisproduk':
                     include "datamasterjenisproduk.php";
+                    break;
+                case 'produk':
+                    include "datamasterproduk.php";
                     break;
                 case 'device':
                     // $profile = curl("http://server.horang.id:9992/api/device");
@@ -247,7 +234,22 @@ $profile = curl1("$url/asuransi");
                     break;   
                 case 'listsewaexpired':
                     include "listsewaexpired.php";
+                    break;
+                case 'laporanpenjualan':
+                    include "laporanpenjualan.php";
+                    break;  
+                case 'laporanpenjualanjenisproduk':
+                    include "laporanpenjualanjenisproduk.php";
+                    break;
+                case 'laporanpenjualancostumercontainer':
+                    include "laporanpenjualancostumercontainer.php";
                     break;    
+                case 'laporanpenjualancontainercostumer':
+                    include "laporanpenjualancontainercostumer.php";
+                    break;    
+                case 'laporanjumlahkontainerterpakai':
+                    include "laporanjumlahkontainerterpakai.php";
+                    break;  
             }
         } 
         else {
@@ -280,23 +282,26 @@ $profile = curl1("$url/asuransi");
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>    
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js "></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/js/jszip.min.js"></script>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/0.1.53/vfs_fonts.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>    
+    <script src="assets/js/buttons.colVis.min.js "></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.rowGroup.min.js"></script>
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
 </body>
 
 </html>

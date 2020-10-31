@@ -55,17 +55,17 @@ $data = json_decode($profile, TRUE);
     <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-   
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-
+    <!-- amcharts css -->
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -134,24 +134,24 @@ $data = json_decode($profile, TRUE);
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js "></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/js/jszip.min.js"></script>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>    
+    <script src="assets/js/buttons.colVis.min.js "></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/responsive.bootstrap4.min.js"></script>
     <script>
             $(document).ready(function() {
                 var table = $('#example').DataTable( {
-                    lengthChange: false,
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "ALL"]],
                     buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
                 } );
                 table.buttons().container()
@@ -197,6 +197,14 @@ $data = json_decode($profile, TRUE);
                         <label for="examplePassword" class="">Tanggal Order</label>
                         <input type="date" class="form-control" value=
                         "<?php echo substr($row['tanggal_order'],0,10); ?>" readonly="readonly">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="examplePassword" class="">Denda</label>
+                        <input name="denda" placeholder="ketik Denda disini..." type="number" value="{{model.PortNumber || 0}}" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="examplePassword" class="">Keterangan</label>
+                        <input name="keterangan" placeholder="ketik Keterangan disini..." type="text" class="form-control" required>
                     </div>
                         <br>
                         <button class="mt-1 btn btn-primary" type="submit">Selesai</button>

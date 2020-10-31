@@ -55,15 +55,15 @@ $datap = json_decode($provinsi, TRUE);
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amcharts css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
@@ -132,10 +132,10 @@ $datap = json_decode($provinsi, TRUE);
                                 <!--end modal form add master -->
                                 <h4 class="header-title">Data Master Kota</h4>
                                 <div class="data-tables">
-                                    <table id="example" class="table table-bordered table-striped dt-responsive nowrab" style="width:100%">
+                                    <table id="example" style="width:100%">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th class="text-left">No</th>
+                                                <!-- <th class="text-left">No</th> -->
                                                 <th class="text-left">Kota</th>
                                                 <th class="text-left">Keterangan</th>
                                                 <th class="text-left">Provinsi</th>
@@ -149,10 +149,10 @@ $datap = json_decode($provinsi, TRUE);
                                             foreach ($data as $row) :
                                             ?>
                                             <tr>
-                                                <th scope="row"><?php echo $i; $i++ ?></th>
+                                                <!-- <th scope="row"><?php echo $i; $i++ ?></th> -->
                                                 <td class="text-left"><?php echo $row["nama_kota"]?></td>
                                                 <td class="text-left"><?php echo $row["keterangan"] ?></td>
-                                                <td class="text-left"><?php echo $row["provinsi"] ?></td>
+                                                <td class="text-left"><h4><b><?php echo $row["provinsi"] ?></b></h4></td>
                                                 <td class="text-left"><?php 
                                                 if ($row["status"]==1){
                                                     echo 'Aktif';
@@ -187,25 +187,60 @@ $datap = json_decode($provinsi, TRUE);
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>    
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js "></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/js/jszip.min.js"></script>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>    
+    <script src="assets/js/buttons.colVis.min.js "></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/responsive.bootstrap4.min.js"></script>
     <script>
             $(document).ready(function() {
+                var groupColumn = 2;
                 var table = $('#example').DataTable( {
-                    lengthChange: false,
-                    buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "ALL"]],
+                    buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
+                    // order: [[0, 'asc']],
+                    // rowGroup: {
+                        // dataSrc: 0
+                    // group columb
+                "columnDefs": [
+                        { "visible": false, "targets": groupColumn }
+                    ],
+                    "order": [[ groupColumn, 'asc' ]],
+                    "displayLength": 25,
+                    "drawCallback": function ( settings ) {
+                        var api = this.api();
+                        var rows = api.rows( {page:'current'} ).nodes();
+                        var last=null;
+            
+                        api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+                            if ( last !== group ) {
+                                $(rows).eq( i ).before(
+                                    '<tr class="group"><td colspan="5">'+group+'</td></tr>'
+                                );
+            
+                                last = group;
+                            }
+                        } );
+                    }
+                } );
+                // group columb
+                $('#example tbody').on( 'click', 'tr.group', function () {
+                    var currentOrder = table.order()[0];
+                    if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+                        table.order( [ groupColumn, 'desc' ] ).draw();
+                    }
+                    else {
+                        table.order( [ groupColumn, 'asc' ] ).draw();
+                    }
                 } );
                 table.buttons().container()
                     .appendTo( '#example_wrapper .col-md-6:eq(0)' );

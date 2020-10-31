@@ -52,15 +52,15 @@ $data = json_decode($profile, TRUE);
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amcharts css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
@@ -97,12 +97,12 @@ $data = json_decode($profile, TRUE);
                                                         <input name="kode_device" placeholder="ketik kode device disini..." type="text" class="form-control" required>
                                                     </div>
                                                     <div class="position-relative form-group">
-                                                        <label for="examplePassword" class="">Serial Device</label>
-                                                        <input name="serial_device" placeholder="ketik serial device disini..." type="text" class="form-control" required>
+                                                        <label for="examplePassword" class="">Mac</label>
+                                                        <input name="mac" placeholder="ketik mac disini..." type="text" class="form-control" required>
                                                     </div>
                                                     <div class="position-relative form-group">
-                                                        <label for="examplePassword" class="">Hardware ID</label>
-                                                        <input name="hardware_id" placeholder="ketik hardware id disini..." type="text" class="form-control" required>
+                                                        <label for="examplePassword" class="">Keterangan</label>
+                                                        <input name="keterangan" placeholder="ketik keterangan id disini..." type="text" class="form-control" required>
                                                     </div>
                                                     <div class="position-relative form-group">
                                                         <label for="examplePassword" class="">Ipaddress</label>
@@ -126,8 +126,8 @@ $data = json_decode($profile, TRUE);
                                     <tr>
                                         <th class="text-left">No</th>
                                         <th class="text-left">Kode Device</th>
-                                        <th class="text-left">Serial Device</th>
-                                        <th class="text-left">Hrdware ID</th>
+                                        <th class="text-left">mac</th>
+                                        <th class="text-left">Keterangan</th>
                                         <th class="text-left">Ipaddress</th>
                                         <th class="text-left">Action</th>
                                     </tr>
@@ -140,8 +140,8 @@ $data = json_decode($profile, TRUE);
                                     <tr>
                                         <th scope="row"><?php echo $i; $i++ ?></th>
                                         <td class="text-left"><?php echo $row["kode_device"]?></td>
-                                        <td class="text-left"><?php echo $row["serial_device"] ?></td>
-                                        <td class="text-left"><?php echo $row["hardware_id"] ?></td>
+                                        <td class="text-left"><?php echo $row["mac"] ?></td>
+                                        <td class="text-left"><?php echo $row["keterangan"] ?></td>
                                         <td class="text-left"><?php echo $row["ipaddress"]?></td>                                              
                                         <th>
                                             <form method="post">
@@ -171,24 +171,24 @@ $data = json_decode($profile, TRUE);
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>    
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js "></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/js/jszip.min.js"></script>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>    
+    <script src="assets/js/buttons.colVis.min.js "></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/responsive.bootstrap4.min.js"></script>
     <script>
             $(document).ready(function() {
                 var table = $('#example').DataTable( {
-                    lengthChange: false,
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "ALL"]],
                     buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
                 } );
                 table.buttons().container()
@@ -222,15 +222,15 @@ $data = json_decode($profile, TRUE);
                             <input name="kode_device" value="<?php echo $row['kode_device'] ?>" placeholder="ketik kode device disini..." type="text" class="form-control" required>
                         </div>
                         <div class="position-relative form-group">
-                            <label for="examplePassword" class="">Serial Device</label>
-                            <input name="serial_device" value="<?php echo $row['serial_device'] ?>" placeholder="ketik serial device disini..." type="text" class="form-control" required>
+                            <label for="examplePassword" class="">Mac</label>
+                            <input name="mac" value="<?php echo $row['mac'] ?>" placeholder="ketik serial device disini..." type="text" class="form-control" required>
                         </div>
                         <div class="position-relative form-group">
-                            <label for="examplePassword" class="">Hardware ID</label>
-                            <input name="hardware_id" value="<?php echo $row['hardware_id'] ?>" placeholder="ketik hardware id disini..." type="text" class="form-control" required>
+                            <label for="examplePassword" class="">Keterangan</label>
+                            <input name="keterangan" value="<?php echo $row['keterangan'] ?>" placeholder="ketik keterangan disini..." type="text" class="form-control" required>
                         </div>
                         <div class="position-relative form-group">
-                            <label for="examplePassword" class="">Serial Device</label>
+                            <label for="examplePassword" class="">Ipadress</label>
                             <input name="ipaddress" value="<?php echo $row['ipaddress'] ?>" placeholder="ketik ipaddress device disini..." type="text" class="form-control" required>
                         </div>
                             <br>

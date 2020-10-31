@@ -66,12 +66,15 @@ $kode_kontainer = ISSET($data['0']['kode_kontainer'])?$data['0']['kode_kontainer
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amcharts css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
@@ -178,11 +181,11 @@ $kode_kontainer = ISSET($data['0']['kode_kontainer'])?$data['0']['kode_kontainer
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
     <!-- others plugins -->
     <!-- <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script> -->

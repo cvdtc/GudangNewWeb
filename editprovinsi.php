@@ -33,6 +33,7 @@
             header('location: login.php');
         }
         else if ($resultStatus == 200) {
+            // echo "<script>alert('Data Berhasil Disimpan.'); header ('location: home.php?page=provinsi');</script>";
             return $server_output;
         }
     }

@@ -3,8 +3,8 @@ $koneksi = mysqli_connect("factory.grand-elephant.co.id","root","hanyaadminyangt
 
  
 // Check connection
-if (mysqli_connect_errno()){
-	echo "Koneksi database gagal : " . mysqli_connect_error();
-}
+if(!$koneksi){ 
+    die ("Koneksi dengan database gagal: ".mysql_connect_error());
+  }
  
 ?>

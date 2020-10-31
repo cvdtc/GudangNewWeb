@@ -3,14 +3,16 @@
 
 include_once 'url.php';
 session_start();
-header ('location: home.php?page=listsewaexpired');
+// header ('location: home.php?page=listsewaexpired');
 $profile = "$url/selesai";
 $ch=curl_init($profile);
 
 $token = $_SESSION['access_token'];
 $basedata = array(
         'token' => $token,
-        "idtransaksi" => $_POST['idtransaksi']
+        "idtransaksi" => $_POST['idtransaksi'],
+        'denda' => $_POST['denda'],
+        'keterangan' => $_POST['keterangan']
     );
 $data = json_encode($basedata);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));

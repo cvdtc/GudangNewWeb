@@ -26,11 +26,12 @@
     } else {
         $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if ($resultStatus == 403) {
-            header('Location: login.php');
+            header ('location: home.php');
         } else if ($resultStatus == 401) {
-            header('location: login.php');
+            header ('location: home.php');
         }
         else if ($resultStatus == 201) {
+            // echo "<script>alert('Data Berhasil Disimpan.');header ('location: home.php?page=provinsi');</script>";
             return $server_output;
         }
     }

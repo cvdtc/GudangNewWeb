@@ -52,20 +52,17 @@ $data = json_decode($profile, TRUE);
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <!-- <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-   
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-
+    <link rel="stylesheet" href="assets/css/slicknav.min.css"> -->
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/daterangepicker.css" />
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -140,7 +137,8 @@ $data = json_decode($profile, TRUE);
                                 <!--end modal form add master -->
                                 <h4 class="header-title">Data Master Asuransi</h4>
                                 <div class="data-tables">
-                                <table id="example" class="table table-bordered table-striped dt-responsive nowrab" style="width:100%">
+                                <!-- <table id="example" class="table table-bordered table-striped dt-responsive nowrab" style="width:100%"> -->
+                                <table id="example" class="display" style="width:100%">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                             <th class="text-left">No</th>
@@ -172,8 +170,9 @@ $data = json_decode($profile, TRUE);
                                                     echo "Tidak Aktif";
                                                 } ?>
                                                 </td>
-                                                <td><?php $dt = strtotime($row['tanggal_kontrak_awal']); echo date("m/d/Y", $dt); ?></td>
-                                                <td><?php $dt = strtotime($row['tanggal_kontrak_akhir']); echo date("m/d/Y", $dt); ?></td>
+                                                <!-- <td>php echo substr($row['tanggal_kontrak_awal'],0,10); </td> -->
+                                                <td><?php $dt = strtotime($row['tanggal_kontrak_awal']); echo date("d/m/Y", $dt); ?></td>
+                                                <td><?php $dt = strtotime($row['tanggal_kontrak_akhir']); echo date("d/m/Y", $dt); ?></td>
                                                 <!-- <td> $dt = strtotime($row['tanggal_kontrak_akhir']); echo substr(date("m/d/Y", $dt),0,10); ?></td> -->
                                                 <th>
                                                     <form method="post">
@@ -196,42 +195,128 @@ $data = json_decode($profile, TRUE);
     <!-- bootstrap 4 js -->
     <!-- <script src="assets/js/popper.min.js"></script> -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/metisMenu.min.js"></script>
     <script src="assets/js/jquery.slimscroll.min.js"></script>
-    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script> -->
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js "></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/js/jszip.min.js"></script>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>
+    <script src="assets/js/buttons.colVis.min.js "></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/responsive.bootstrap4.min.js"></script>
     <script>
             $(document).ready(function() {
                 var table = $('#example').DataTable( {
-                    lengthChange: false,
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "ALL"]],
                     buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
                 } );
                 table.buttons().container()
                     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
             } );
         </script>
+    <!--DateRangePicker -->
+    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
 
-    <!-- others plugins -->
+<!-- java script search date range -->
+<!-- <script type="text/javascript">  
+   //fungsi untuk filtering data berdasarkan tanggal 
+   var start_date;
+   var end_date;
+   var DateFilterFunction = (function (oSettings, aData, iDataIndex) {
+      var dateStart = parseDateValue(start_date);
+      var dateEnd = parseDateValue(end_date);
+      //Kolom tanggal yang akan kita gunakan berada dalam urutan 6, karena dihitung mulai dari 0
+      var evalDate= parseDateValue(aData[6]);
+        if ( ( isNaN( dateStart ) && isNaN( dateEnd ) ) ||
+             ( isNaN( dateStart ) && evalDate <= dateEnd ) ||
+             ( dateStart <= evalDate && isNaN( dateEnd ) ) ||
+             ( dateStart <= evalDate && evalDate <= dateEnd ) )
+        {
+            return true;
+        }
+        return false;
+  });
+
+  // fungsi untuk converting format tanggal dd/mm/yyyy menjadi format tanggal javascript menggunakan zona aktubrowser
+  function parseDateValue(rawDate) {
+      var dateArray= rawDate.split("/");
+      var parsedDate= new Date(dateArray[2], parseInt(dateArray[1])-1, dateArray[0]);  // -1 because months are from 0 to 11   
+      return parsedDate;
+  }    
+
+  $( document ).ready(function() {
+  //konfigurasi DataTable pada tabel dengan id example dan menambahkan  div class dateseacrhbox dengan dom untuk meletakkan inputan daterangepicker
+   var table = $('#example').DataTable({
+    // lengthChange: false,
+    // buttons: [ 'copy', 'excel', 'pdf', 'colvis' ] +
+    "dom": "<'row'<'col-sm-4'l><'col-sm-5' <'datesearchbox'>><'col-sm-3'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'i><'col-sm-7'p>>"
+      
+      
+   });
+//    var table1 = $('#example').DataTable( {
+//             lengthChange: false,
+//             buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+//         } );
+//    table1.buttons().container()
+//                     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+
+   //menambahkan daterangepicker di dal2am datatables
+   $("div.datesearchbox").html('<div class="input-group"> <div class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </div><input type="text" class="form-control pull-right" id="datesearch" placeholder="Search by date range.."> </div>');
+
+   document.getElementsByClassName("datesearchbox")[0].style.textAlign = "right";
+
+   //konfigurasi daterangepicker pada input dengan id datesearch
+   $('#datesearch').daterangepicker({
+      autoUpdateInput: false
+    });
+
+   //menangani proses saat apply date range
+    $('#datesearch').on('apply.daterangepicker', function(ev, picker) {
+       $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+       start_date=picker.startDate.format('DD/MM/YYYY');
+       end_date=picker.endDate.format('DD/MM/YYYY');
+       $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
+       table.draw();
+    });
+    //cancel mengembalikan tampilan datagrid data all 
+    $('#datesearch').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+      start_date='';
+      end_date='';
+      $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
+      table.draw();
+    });
+
+      
+        // table1.buttons().container().appendTo( '#example_wrapper .col-md-6:eq(0)' );
+  });
+//   $(document).ready(function() {
+//                 var table = $('#example').DataTable( {
+//                     lengthChange: false,
+//                     buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+//                 } );
+                // $dTable.buttons().container()
+                //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+//             } );
+// </script> -->
+     <!-- others plugins -->
     <!-- <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script> -->
 </body>
-
 </html>
 
 <?php

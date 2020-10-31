@@ -2,18 +2,23 @@
 
     include_once 'url.php';
     session_start();
-    header ('location: home.php?page=device');
-    $profile = "$url/udevice";
+    // header ('location: home.php?page=produk');
+    $profile = "$url/uproduk";
     $ch = curl_init($profile);
-    
+
     $token = $_SESSION['access_token'];
     $basedata = array(
         'token' => $token,
-        'iddevice' => $_POST['iddevice'],
-        'kode_device' => $_POST['kode_device'],
-        'mac' => $_POST['mac'],
-        'keterangan' => $_POST['keterangan'],
-        'ipaddress' => $_POST['ipaddress']
+        'idproduk' => $_POST['idproduk'],
+        "idjenis_produk" => $_POST['idjenis_produk'],
+        "idlokasi" => $_POST['idlokasi'],
+        "kode_kontainer" => $_POST['kode_kontainer'],
+        "keterangan" => $_POST['keterangan'],
+        "gambar" => $_POST['gambar'],
+        "harga" => $_POST['harga'],
+        "iddevice" => $_POST['iddevice'],
+        "idkondisi" => $_POST['idkondisi'],
+        "status" => $_POST['status']
         );    
     $data = json_encode($basedata);
     

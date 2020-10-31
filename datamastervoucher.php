@@ -53,15 +53,15 @@ $data = json_decode($profile, TRUE);
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amcharts css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
@@ -149,6 +149,7 @@ $data = json_decode($profile, TRUE);
                                                 <th class="text-left">Nominal</th>
                                                 <th class="text-left">Keterangan</th>
                                                 <th class="text-left">Gambar</th>
+                                                <th class="text-left">Upload gambar</th>
                                                 <th class="text-left">Action</th>
                                             </tr>
                                         </thead>
@@ -164,15 +165,16 @@ $data = json_decode($profile, TRUE);
                                                 <td class="text-left"><?php echo $row["persentase"] ?></td>
                                                 <td class="text-left"><?php echo $row["nominal"]?></td>
                                                 <td class="text-left"><?php echo $row["keterangan"]?></td>
-                                                <td class="text-left"><?php echo $row["gambar"]?></td>                                              
+                                                <!-- <td class="text-left"><?php echo $row["gambar"]?></td>          -->
+                                                <td style="text-align: center;"><img src="<?php echo $row['gambar']; ?>" style="width: 120px;"></td>                                     
                                                 <th>
                                                     <form method="post">
-                                                        <button type="button" data-toggle="modal" class="btn btn-primary" name="idvoucher" type="submit"  data-target=".modal-edit<?php echo $row["idvoucher"]; ?>">Edit</button>
+                                                        <button type="button" data-toggle="modal" class="btn btn-primary" name="idvoucher" type="submit"  data-target=".modal-upload<?php echo $row["idvoucher"]; ?>">Upload Gambar</button>
                                                     </form>
                                                 </th>
                                                 <th>
                                                     <form method="post">
-                                                        <button type="button" data-toggle="modal" class="btn btn-primary" name="idvoucher" type="submit"  data-target=".modal-edit<?php echo $row["idvoucher"]; ?>">Upload Gambar</button>
+                                                        <button type="button" data-toggle="modal" class="btn btn-primary" name="idvoucher" type="submit"  data-target=".modal-edit<?php echo $row["idvoucher"]; ?>">Edit</button>
                                                     </form>
                                                 </th>
                                             </tr>
@@ -196,24 +198,24 @@ $data = json_decode($profile, TRUE);
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>    
-    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js "></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/jquery.dataTables.js"></script>
+    <script src="assets/js/responsive.bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/js/jszip.min.js"></script>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>    
+    <script src="assets/js/buttons.colVis.min.js "></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/responsive.bootstrap4.min.js"></script>
     <script>
             $(document).ready(function() {
                 var table = $('#example').DataTable( {
-                    lengthChange: false,
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "ALL"]],
                     buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
                 } );
                 table.buttons().container()
@@ -221,8 +223,8 @@ $data = json_decode($profile, TRUE);
             } );
     </script>
     <!-- others plugins -->
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <!-- <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/scripts.js"></script> -->
 </body>
 
 </html>
@@ -262,12 +264,61 @@ $data = json_decode($profile, TRUE);
                         <label for="examplePassword" class="">Keterangan</label>
                         <input name="keterangan" value="<?php echo $row['keterangan'] ?>" placeholder="ketik keterangan disini..." type="text" class="form-control" required>
                     </div>
-                    <div class="position-relative form-group">
-                        <label for="examplePassword" class="">Gambar</label>
-                        <input name="gambar" value="<?php echo $row['gambar'] ?>" placeholder="ketik gambar disini..." type="text" class="form-control" required>
-                    </div>
                         <br>
                         <button class="mt-1 btn btn-primary" type="submit">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- end madal edit -->
+            <?php endforeach ?>
+
+            <!-- modal upload gambar -->
+<?php
+        foreach ($data as $row) :
+?>
+
+    <div class="modal fade modal-upload<?php echo $row['idvoucher']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Upload Gambar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="uploadgambarvoucher.php" enctype="multipart/form-data">    
+                    <input name="idvoucher" value="<?php echo $row['idvoucher'] ?>" style="display:none">
+                    <div class="position-relative form-group"><label for="exampleEmail" class="">Kode Voucher</label>
+                    <input value="<?php echo $row['kode_voucher'] ?>" type="text" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="examplePassword" class="">Jumlah</label>
+                        <input value="<?php echo $row['jumlah_voucher'] ?>" type="text" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="examplePassword" class="">persentase</label>
+                        <input value="<?php echo $row['persentase'] ?>" type="text" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="examplePassword" class="">Nominal</label>
+                        <input value="<?php echo $row['nominal'] ?>" type="text" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="examplePassword" class="">Keterangan</label>
+                        <input value="<?php echo $row['keterangan'] ?>" type="text" class="form-control" readonly="readonly">
+                    </div>
+                    <div>
+                        <label>Gambar</label>
+                        <img src="<?php echo $row['gambar']; ?>" style="width: 120px;float: left;margin-bottom: 5px;">
+                        <input type="file" name="gambar" />
+                        <i style="float: left;font-size: 11px;color: red">Ekstensi Yang Diperbolehkan 'JPG','jpg'</i>
+                    </div>
+                        <br>
+                        <button class="mt-1 btn btn-primary" type="submit">Upload</button>
                     </form>
                 </div>
             </div>
